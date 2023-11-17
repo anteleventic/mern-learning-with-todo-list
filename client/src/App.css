@@ -1,0 +1,48 @@
+.App {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+ul {
+  list-style-type: none;
+  width: 300px;
+  padding: 0;
+  position: relative;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+.state {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.state.done {
+  text-decoration: line-through;
+  color: green;
+}
+
+.remove {
+  margin-left: 20px;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+}
+
+
+form input {
+  width: 200px;
+  display: inline-block;
+  padding: 8px 6px;
+}
+
+form button {
+  width: 80px;
+  margin-left: 20px;
+  height: 36px;
+}
