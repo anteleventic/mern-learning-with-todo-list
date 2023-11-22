@@ -1,4 +1,5 @@
-import {MongoClient, ObjectId} from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
+import { Item } from '@shared/interfaces/interfaces';
 import express, {Express, Request, Response} from 'express';
 import cors from 'cors';
 const app: Express = express();
@@ -14,11 +15,6 @@ const uri = "mongodb+srv://{name}:{pw}@aleventic.t5yg8vg.mongodb.net/?retryWrite
 const localUri = `mongodb://mongodb:27017/`;
 const client = new MongoClient(localUri, {auth: {username: DB_USER, password: DB_PASSWORD}});
 
-interface Item {
-    _id?: ObjectId
-    title: string,
-    state: boolean
-}
 
 app.use(cors());
 app.use(express.json());
@@ -28,6 +24,7 @@ app.post('/newItem', async (req: Request, res: Response) => {
     const itemsCollection = db.collection<Item>('items');
 
     const result = await itemsCollection.insertOne({
+        _id: new ObjectId(),
         title: req.body.title,
         state: false
     });

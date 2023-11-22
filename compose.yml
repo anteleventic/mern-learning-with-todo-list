@@ -35,6 +35,7 @@ services:
       dockerfile: ./client/Dockerfile
     volumes:
      - ./client:/app/client
+     - ./shared:/app/shared
     ports:
       - $CLIENT_LOCAL_PORT:$CLIENT_DOCKER_PORT
     

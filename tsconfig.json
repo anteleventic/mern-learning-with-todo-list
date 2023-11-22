@@ -4,7 +4,10 @@
       "strict": true,
       "esModuleInterop": true,
       "composite": true,
-      "baseUrl": "."
+      "baseUrl": ".",
+      "paths": {
+        "@shared/*": ["shared/*"],
+      }
     },
     "include": [
         "./server/**/*.ts",

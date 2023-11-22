@@ -1,12 +1,4 @@
-interface Item {
-    _id: string
-    title: string,
-    state: boolean
-}
-
-interface ListProps {
-    items: Item[]
-}
+import { Item, ListProps } from '@shared/interfaces/interfaces';
 
 export default function List(props: ListProps) {
     function handleDoneAction(id: string, state: boolean) {

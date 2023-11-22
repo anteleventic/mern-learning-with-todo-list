@@ -1,14 +1,5 @@
 import { useState } from "react";
-
-interface Item {
-    _id: string
-    title: string,
-    state: boolean
-}
-
-interface AddFormProps {
-    updateItems: (arg0: Item) => void;
-}
+import { Item, AddFormProps } from '@shared/interfaces/interfaces';
 
 export default function AddForm(props: AddFormProps) {
     const [formTitle, setFormTitle] = useState<string|null>("");
