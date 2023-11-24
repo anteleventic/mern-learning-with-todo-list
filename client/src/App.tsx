@@ -1,30 +1,36 @@
 import { useEffect, useState } from "react"
 import { Item, AddFormProps } from '@shared/interfaces';
+import { getItems } from "./functions/db";
 import AddForm from './components/AddForm';
 import List from './components/List';
 import './App.css';
 
 function App() {
   const [items, setItems] = useState<Item[]>([]);
+  const [formTitle, setFormTitle] = useState<string>("");
+  
+  useEffect(() => {(
+    async () => {
+      setItems(await getItems());
+    })();
+  }, [items, formTitle]);
 
-  useEffect(() => {
-      (async () => {
-          const items = await fetch('http://localhost:3001/items');
-          const res: Item[] = await items.json();
-          setItems(res);
-      })();
-  }, [items]);
-
-  const updateItems = (item: Item) => {
-    setItems([...items, item]);
+  const addFormProperties: AddFormProps = {
+    updateItems: (item: Item) => {
+      setItems([...items, item]);
+    },
+    formTitle: formTitle,
+    updateFormTitle: (title: string) => {
+      setFormTitle(title);
+    }
   }
 
-  return (
+  return <>
     <div className="App">
-      <AddForm updateItems={updateItems} />
+      <AddForm {...addFormProperties} />
       <List items={items} />
     </div>
-  );
+  </>;
 }
 
 export default App;
