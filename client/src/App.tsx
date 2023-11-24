@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Item } from '@shared/interfaces/interfaces';
+import { Item, AddFormProps } from '@shared/interfaces';
 import AddForm from './components/AddForm';
 import List from './components/List';
 import './App.css';

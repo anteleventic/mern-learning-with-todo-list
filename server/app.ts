@@ -1,5 +1,5 @@
 import { MongoClient, ObjectId } from 'mongodb';
-import { Item } from '@shared/interfaces/interfaces';
+import { Item } from '@shared/interfaces';
 import express, {Express, Request, Response} from 'express';
 import cors from 'cors';
 const app: Express = express();
