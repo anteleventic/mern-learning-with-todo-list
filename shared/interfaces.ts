@@ -16,4 +16,4 @@ interface AddFormProps {
     updateFormTitle: (arg0: string) => void;
 }
 
-export type {ListProps, Item, AddFormProps}
+export type { ListProps, Item, AddFormProps }
