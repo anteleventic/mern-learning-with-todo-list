@@ -3,6 +3,7 @@ import { Item, AddFormProps } from '@shared/interfaces';
 import { getItems } from "./functions/db";
 import AddForm from './components/AddForm';
 import List from './components/List';
+import logo from './logo.svg';
 import './App.css';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
 
   return <>
     <div className="App">
+      <img className="logo" src={logo} alt="Todo App" />
       <AddForm {...addFormProps} />
       <List items={items} />
     </div>

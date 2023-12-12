@@ -6,6 +6,10 @@
   height: 100vh;
 }
 
+.logo {
+  width: 200px;
+}
+
 ul {
   list-style-type: none;
   width: 300px;
