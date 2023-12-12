@@ -1,4 +1,4 @@
-![Logo](https://raw.githubusercontent.com/anteleventic/mern-learning-with-todo-list/main/client/src/screenshot.svg)
+![Logo](https://raw.githubusercontent.com/anteleventic/mern-learning-with-todo-list/main/client/src/screenshot.png)
 
 # Intro
 Welcome to my MERN (MongoDB, Express.js, React, Node.js) Stack journey! 🚀 Let's rewind to the birth of this repository, the INIT commit. Now, the INIT commit isn't your typical fresh start; it's more like the middle of my learning process. So, buckle up as I unravel the undocumented chapters of my coding part.
