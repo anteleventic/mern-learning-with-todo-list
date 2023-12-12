@@ -1,26 +1,15 @@
-import { MongoClient, ObjectId } from 'mongodb';
+import { ObjectId } from 'mongodb';
+import { database } from './database';
 import { Item } from '@shared/interfaces';
 import express, {Express, Request, Response} from 'express';
 import cors from 'cors';
 const app: Express = express();
-const {
-    DB_USER,
-    DB_PASSWORD,
-    DB_HOST,
-    DB_PORT,
-    DB_NAME,
-} = process.env;
-
-const uri = "mongodb+srv://{name}:{pw}@aleventic.t5yg8vg.mongodb.net/?retryWrites=true&w=majority";
-const localUri = `mongodb://mongodb:27017/`;
-const client = new MongoClient(localUri, {auth: {username: DB_USER, password: DB_PASSWORD}});
-
 
 app.use(cors());
 app.use(express.json());
 
 app.post('/newItem', async (req: Request, res: Response) => {
-    const db = client.db('todos');
+    const db = database.db('todos');
     const itemsCollection = db.collection<Item>('items');
 
     const result = await itemsCollection.insertOne({
@@ -36,7 +25,7 @@ app.post('/newItem', async (req: Request, res: Response) => {
 });
 
 app.post('/markDone', async (req: Request, res: Response) => {
-    const db = client.db('todos');
+    const db = database.db('todos');
     const itemsCollection = db.collection<Item>('items');
 
     const result = await itemsCollection.updateOne(
@@ -54,7 +43,7 @@ app.post('/markDone', async (req: Request, res: Response) => {
 });
 
 app.post('/removeItem', async (req: Request, res: Response) => {
-    const db = client.db('todos');
+    const db = database.db('todos');
     const itemsCollection = db.collection<Item>('items');
 
     const result = await itemsCollection.deleteOne({
@@ -64,7 +53,7 @@ app.post('/removeItem', async (req: Request, res: Response) => {
 });
 
 app.get('/items', async(req:Request, res: Response) => {
-    const db = client.db('todos');
+    const db = database.db('todos');
     const itemsCollection = db.collection<Item>('items');
 
     const result = await itemsCollection.find().toArray();
@@ -77,7 +66,7 @@ app.get('/', async (req: Request, res: Response) => {
 });
 
 async function run() {
-    await client.connect();
+    await database.connect();
     app.listen(3000, () => console.log('Listening on port 3000'));
 }
 
