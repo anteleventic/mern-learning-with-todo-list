@@ -1,10 +1,9 @@
 import { ObjectId } from 'mongodb';
 import { database } from './config';
-import { RouteProps } from '../config/interfaces';
+import { Request, Response } from 'express';
 import { Item } from '@shared/interfaces';
 
-const newItem = async (props: RouteProps) => {
-    const { req, res } = props;
+const newItem = async (req: Request, res: Response) => {
     const db = database.db('todos');
     const itemsCollection = db.collection<Item>('items');
 
@@ -20,8 +19,7 @@ const newItem = async (props: RouteProps) => {
     res.end();
 }
 
-const markDone = async (props: RouteProps) => {
-    const { req, res } = props;
+const markDone = async (req: Request, res: Response) => {
     const db = database.db('todos');
     const itemsCollection = db.collection<Item>('items');
 
@@ -39,8 +37,7 @@ const markDone = async (props: RouteProps) => {
     res.end();
 }
 
-const removeItem = async (props: RouteProps) => {
-    const { req, res } = props;
+const removeItem = async (req: Request, res: Response) => {
     const db = database.db('todos');
     const itemsCollection = db.collection<Item>('items');
 
@@ -50,8 +47,7 @@ const removeItem = async (props: RouteProps) => {
     res.end();
 }
 
-const getItems = async (props: RouteProps) => {
-    const { res } = props;
+const getItems = async (req: Request, res: Response) => {
     const db = database.db('todos');
     const itemsCollection = db.collection<Item>('items');
 
@@ -60,8 +56,7 @@ const getItems = async (props: RouteProps) => {
     res.end();
 }
 
-const startUp = async (props: RouteProps) => {
-    const { res } = props;
+const startUp = async (req: Request, res: Response) => {
     res.end('Server is working fine!');
 }
 
