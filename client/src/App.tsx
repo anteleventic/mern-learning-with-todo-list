@@ -15,7 +15,7 @@ function App() {
     })();
   }, [items, formTitle]);
 
-  const addFormProperties: AddFormProps = {
+  const addFormProps: AddFormProps = {
     updateItems: (item: Item) => {
       setItems([...items, item]);
     },
@@ -27,7 +27,7 @@ function App() {
 
   return <>
     <div className="App">
-      <AddForm {...addFormProperties} />
+      <AddForm {...addFormProps} />
       <List items={items} />
     </div>
   </>;

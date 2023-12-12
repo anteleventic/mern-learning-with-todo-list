@@ -35,7 +35,12 @@ function handleRemoveAction(item: Item) {
     );
 }
 
-async function handleSubmit(e: React.FormEvent, title: string, updateItems: (arg0: Item) => void, updateFormTitle: (arg0: string) => void) {
+async function handleSubmit(
+    e: React.FormEvent, 
+    title: string, 
+    updateItems: (arg0: Item) => void, 
+    updateFormTitle: (arg0: string) => void
+) {
     e.preventDefault();
 
     const response = await fetch('http://localhost:3001/newItem',
